@@ -4001,7 +4001,7 @@ case 'gitpull':
             reply("Git pull berhasil dilakukan.");
         });
     } else {
-        reply("Maaf, perintah ini hanya bisa dilakukan oleh adminsss.");
+        reply("Maaf, perintah ini hanya bisa dilakukan oleh adminsssss.");
     }
     break;
 
