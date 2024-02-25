@@ -4018,7 +4018,7 @@ case 'gitpull':
             reply("Git pull berhasil dilakukan.");
         });
     } else {
-        reply("Maaf, perintah ini hanya bisa dilakukan oleh adminsssss.");
+        reply("Maaf, perintah ini hanya bisa dilakukan oleh admins");
     }
     break;
 
