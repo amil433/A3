@@ -3938,19 +3938,24 @@ async function setStatusOtp(statusnya, accessNya) {
 
 let gitPullIntervalId = null;
 let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
-let isGitPull = false;
+let isGitPull = false; // Variabel untuk menandai apakah git pull sedang berjalan
 
 function startAutoGitPull() {
-    if (isGitPull = true || gitPullIntervalId === null) {
+    if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
         gitPullIntervalId = setInterval(() => {
             const { exec } = require("child_process");
+            isGitPull = true; // Setel isGitPull menjadi true agar tidak memulai git pull berulang kali
             exec("git pull", (error, stdout, stderr) => {
+                isGitPull = false; // Setel isGitPull menjadi false setelah git pull selesai
                 if (error) {
                     console.error(`Error: ${error.message}`);
+                    reply("Terjadi kesalahan saat menjalankan git pull.");
+                    return;
                 }
                 if (stderr) {
                     console.error(`Stderr: ${stderr}`);
                     reply(stderr);
+                    return;
                 }
                 console.log(`Stdout: ${stdout}`);
                 if (stdout.includes('Already up to date')) {
@@ -3970,16 +3975,16 @@ function startAutoGitPull() {
     }
 }
 
-
 function stopAutoGitPull() {
-  if (isGitPull = false) {
-      clearInterval(gitPullIntervalId);
-      gitPullIntervalId = null;
-      reply("Auto git pull telah dimatikan.");
-  } else {
-      reply("Auto git pull sudah dimatikan.");
-  }
+    if (isGitPull) { // Periksa apakah git pull sedang berjalan
+        clearInterval(gitPullIntervalId);
+        gitPullIntervalId = null;
+        reply("Auto git pull telah dimatikan.");
+    } else {
+        reply("Auto git pull sudah dimatikan.");
+    }
 }
+
 case 'gitpullauto': {
   const action = args[0];
   if(!isOwner) return reply('Kamu Bukan Owner!');
