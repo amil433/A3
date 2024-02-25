@@ -3940,6 +3940,7 @@ async function setStatusOtp(statusnya, accessNya) {
 
 
 function startAutoGitPull() {
+  setInterval(() => {
   let isGitPull = false;
   let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
   let gitPullIntervalId = null;
@@ -3970,15 +3971,17 @@ function startAutoGitPull() {
                     uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
                 }
             });
-        }, 15000); // Lakukan git pull setiap 15 detik (15000 milidetik)
+        }, 5000); // Lakukan git pull setiap 15 detik (15000 milidetik)
         reply("Auto git pull telah diaktifkan!!.");
     } else {
         reply("Auto git pull sudah aktif!!.");
     }
+  }, 15000);
+  reply('Auto Git Pull Telah Selesai') // Tunggu 5 menit sebelum melakukan auto git pull pertama kali
 }
 
+
 function stopAutoGitPull() {
-  let gitPullIntervalId;
     if (isGitPull) { // Periksa apakah git pull sedang berjalan
         clearInterval(gitPullIntervalId);
         gitPullIntervalId = null;
