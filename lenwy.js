@@ -4004,6 +4004,7 @@ case 'gitpullauto': {
   startAutoGitPull(lamaNya);
   isGitPull = true
   reply('Berhasil Menyalakan Auto Pull Selama: ', `${lamaNya}`, 'Menit cuyyysss')
+  reply('Testing');
 }
 break;
 case 'gitpull':
