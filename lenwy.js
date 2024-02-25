@@ -3936,11 +3936,12 @@ async function setStatusOtp(statusnya, accessNya) {
 
 
 
+let gitPullIntervalId = null;
+let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
+let isGitPull = false;
 
 function startAutoGitPull() {
-  let gitPullIntervalId = null;
-let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
-    if (gitPullIntervalId === null) {
+    if (isGitPull = true || gitPullIntervalId === null) {
         gitPullIntervalId = setInterval(() => {
             const { exec } = require("child_process");
             exec("git pull", (error, stdout, stderr) => {
@@ -3969,9 +3970,9 @@ let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah
     }
 }
 
+
 function stopAutoGitPull() {
-  let gitPullIntervalId = null;
-  if (gitPullIntervalId !== null) {
+  if (isGitPull = false) {
       clearInterval(gitPullIntervalId);
       gitPullIntervalId = null;
       reply("Auto git pull telah dimatikan.");
@@ -3985,9 +3986,11 @@ case 'gitpullauto': {
   if(!action) return reply('On atau Off?')
         if (action === 'on') {
             startAutoGitPull();
+            isGitPull = true
             reply('Berhasil Menyalakan Auto Pull')
         } else if (action === 'off') {
             stopAutoGitPull();
+            isGitPull = false
         } else {
             reply("Format perintah salah. Gunakan 'gitpullauto on' untuk mengaktifkan dan 'gitpullauto off' untuk menonaktifkan.");
         }
