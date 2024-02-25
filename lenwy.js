@@ -3982,20 +3982,10 @@ function startAutoGitPull(waktu) {
       gitPullIntervalId = null;
       clearTimeout(timeoutId);
       reply("Auto Pull sudah selesai bos");
+      console.log('Auto git pull dihentikan');
   }, waktu * 60 * 1000); // Set timeout untuk 20 menit
 }
 
-
-
-function stopAutoGitPull() {
-    if (isGitPull) { // Periksa apakah git pull sedang berjalan
-        clearInterval(gitPullIntervalId);
-        gitPullIntervalId = null;
-        reply("Auto git pull telah dimatikan");
-    } else {
-        reply("Auto git pull sudah dimatikan");
-    }
-}
 
 case 'gitpullauto': {
   const lamaNya = args[0];
