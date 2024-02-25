@@ -4026,6 +4026,7 @@ case 'gitpull':
     }
     break;
 
+// command indo nokos    
 case 'indo': {
   let serviceNya = args[0];
   if (cekSaldo(sender,db_saldo) < 20000) return lenwy.sendMessage(from, { text: `Maaf *@${sender.split('@')[0]}*, sepertinya saldo kamu kurang dari Rp 20.000 Silahkan melakukan deposit terlebih dahulu sebelum ${command}`, mentions: [sender]}, { quoted: m })
