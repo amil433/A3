@@ -4003,7 +4003,7 @@ case 'gitpullauto': {
   if(!lamaNya) return reply('Berapa Lama? dalam menit')
   startAutoGitPull(lamaNya);
   isGitPull = true
-  reply('Berhasil Menyalakan Auto Pull Selama: ', lamaNya, 'Menit')
+  reply('Berhasil Menyalakan Auto Pull Selama: ', `${lamaNya}`, 'Menit')
 }
 break;
 case 'gitpull':
