@@ -3937,11 +3937,11 @@ async function setStatusOtp(statusnya, accessNya) {
 
 
 
-let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
-let isGitPull = false; // Variabel untuk menandai apakah git pull sedang berjalan
+
 
 function startAutoGitPull() {
   let isGitPull = false;
+  let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
   let gitPullIntervalId = null;
     if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
         gitPullIntervalId = setInterval(() => {
