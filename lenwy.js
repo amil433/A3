@@ -4000,7 +4000,7 @@ break;
 case 'gitpull':
     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
         const { exec } = require("child_process");
-        exec("git pull", (error, stdout, stderr) => {
+        exec("git pull --no-edit", (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error: ${error.message}`);
                 reply("Ada kesalahan saat menjalankan git pull.");
@@ -4012,7 +4012,7 @@ case 'gitpull':
                 console.log(stderr)
             }
             console.log(`Stdout: ${stdout}`);
-            reply(`Stdout: ${stdout}`);
+            // reply(`Stdout: ${stdout}`);
             console.log(stderr)
             reply(stdout)
             reply("Git pull berhasil dilakukan.");
