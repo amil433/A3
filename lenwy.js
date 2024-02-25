@@ -3950,6 +3950,7 @@ case 'gitpull':
             console.log(`Stdout: ${stdout}`);
             console.log(stderr)
             reply(stderr)
+            reply(stdout)
             reply("Git pull berhasil dilakukan.");
         });
     } else {
