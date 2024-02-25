@@ -3970,6 +3970,7 @@ case 'gitpullauto':
         const action = args[0];
         if (action === 'on') {
             startAutoGitPull();
+            reply('Berhasil Menyalakan Auto Pull')
         } else if (action === 'off') {
             stopAutoGitPull();
         } else {
