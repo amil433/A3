@@ -3954,7 +3954,7 @@ function startAutoGitPull(waktu) {
               if (stderr) {
                   console.error(`Stderr: ${stderr}`);
                   reply(stderr);
-                  reply(stdout);
+                  reply(stdout); // added comment
                   return;
               }
               console.log(`Stdout: ${stdout}`);
