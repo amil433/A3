@@ -3949,6 +3949,12 @@ function startAutoGitPull() {
                     reply(stderr)
                 }
                 console.log(`Stdout: ${stdout}`);
+                if(stdout.includes('Already up to date')){
+                  let uptodate = true
+                } else {
+                  reply(stdout)
+                  let uptodate = false
+                }
                 reply(stdout)
             });
         }, 15000); // Lakukan git pull setiap satu jam (3600000 milidetik)
