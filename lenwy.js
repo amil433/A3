@@ -3949,7 +3949,7 @@ function startAutoGitPull(waktu) {
       if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
           const { exec } = require("child_process");
           isGitPull = true; // Setel isGitPull menjadi true agar tidak memulai git pull berulang kali
-          exec("git pull", (error, stdout, stderr) => {
+          exec("git pull --no-edit", (error, stdout, stderr) => {
               isGitPull = false; // Setel isGitPull menjadi false setelah git pull selesai
               if (error) {
                   console.error(`Error: ${error.message}`);
