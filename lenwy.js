@@ -3978,6 +3978,7 @@ function startAutoGitPull() {
 }
 
 function stopAutoGitPull() {
+  let gitPullIntervalId;
     if (isGitPull) { // Periksa apakah git pull sedang berjalan
         clearInterval(gitPullIntervalId);
         gitPullIntervalId = null;
@@ -4027,11 +4028,6 @@ case 'gitpull':
         reply("Maaf, perintah ini hanya bisa dilakukan oleh adminsssss.");
     }
     break;
-
-case 'tambahsatu':{
-  reply('Ini hasil git pull auto');
-}
-break;
 
 case 'indo': {
   let serviceNya = args[0];
