@@ -3964,7 +3964,7 @@ function startAutoGitPull(waktu) {
               console.log(`Stdout: ${stdout}`);
               if (stdout.includes('Already up to date')) {
                   if (!uptodate) { // Jika sebelumnya belum up to date, reply sekali saja
-                      reply("Repositori sudah up to date.");
+                      reply("Reponya udah paling baru cuy");
                       uptodate = true;
                   }
               } else {
