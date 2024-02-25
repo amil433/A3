@@ -3933,6 +3933,28 @@ async function setStatusOtp(statusnya, accessNya) {
     reply('Ada masalah dalam mendapatkan OTP. Coba lagi nanti ya.');
   }
 };
+case 'gitpull':
+    if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+        const { exec } = require("child_process");
+        exec("git pull", (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error: ${error.message}`);
+                reply("Ada kesalahan saat menjalankan git pull.");
+                return;
+            }
+            if (stderr) {
+                console.error(`Stderr: ${stderr}`);
+                reply("Ada kesalahan stderr saat menjalankan git pull.");
+                return;
+            }
+            console.log(`Stdout: ${stdout}`);
+            reply("Git pull berhasil dilakukan.");
+        });
+    } else {
+        reply("Maaf, perintah ini hanya bisa dilakukan oleh admin.");
+    }
+    break;
+
 case 'indo': {
   let serviceNya = args[0];
   if (cekSaldo(sender,db_saldo) < 20000) return lenwy.sendMessage(from, { text: `Maaf *@${sender.split('@')[0]}*, sepertinya saldo kamu kurang dari Rp 20.000 Silahkan melakukan deposit terlebih dahulu sebelum ${command}`, mentions: [sender]}, { quoted: m })
