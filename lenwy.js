@@ -3982,7 +3982,7 @@ function startAutoGitPull() {
       gitPullIntervalId = null;
       clearTimeout(timeoutId);
       reply("Auto Pull sudah selesai bos");
-  }, 20 * 60 * 1000); // Set timeout untuk 20 menit
+  }, 2 * 60 * 1000); // Set timeout untuk 20 menit
 }
 
 
