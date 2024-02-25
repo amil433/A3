@@ -3991,7 +3991,7 @@ function stopAutoGitPull() {
     if (isGitPull) { // Periksa apakah git pull sedang berjalan
         clearInterval(gitPullIntervalId);
         gitPullIntervalId = null;
-        reply("Auto git pull telah dimatikan.");
+        reply("Auto git pull telah dimatikansss.");
     } else {
         reply("Auto git pull sudah dimatikan.");
     }
