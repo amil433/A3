@@ -3940,45 +3940,51 @@ async function setStatusOtp(statusnya, accessNya) {
 
 
 function startAutoGitPull() {
-  setInterval(() => {
   let isGitPull = false;
   let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
   let gitPullIntervalId = null;
-    if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
-        gitPullIntervalId = setInterval(() => {
-            const { exec } = require("child_process");
-            isGitPull = true; // Setel isGitPull menjadi true agar tidak memulai git pull berulang kali
-            exec("git pull", (error, stdout, stderr) => {
-                isGitPull = false; // Setel isGitPull menjadi false setelah git pull selesai
-                if (error) {
-                    console.error(`Error: ${error.message}`);
-                    reply("Terjadi kesalahan saat menjalankan git pull.");
-                    return;
-                }
-                if (stderr) {
-                    console.error(`Stderr: ${stderr}`);
-                    reply(stderr);
-                    return;
-                }
-                console.log(`Stdout: ${stdout}`);
-                if (stdout.includes('Already up to date')) {
-                    if (!uptodate) { // Jika sebelumnya belum up to date, reply sekali saja
-                        reply("Repositori sudah up to date.");
-                        uptodate = true;
-                    }
-                } else {
-                    reply(stdout);
-                    uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
-                }
-            });
-        }, 5000); // Lakukan git pull setiap 15 detik (15000 milidetik)
-        reply("Auto git pull telah diaktifkan!!.");
-    } else {
-        reply("Auto git pull sudah aktif!!.");
-    }
-  }, 15000);
-  reply('Auto Git Pull Telah Selesai') // Tunggu 5 menit sebelum melakukan auto git pull pertama kali
+  let timeoutId = null;
+
+  gitPullIntervalId = setInterval(() => {
+      if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
+          const { exec } = require("child_process");
+          isGitPull = true; // Setel isGitPull menjadi true agar tidak memulai git pull berulang kali
+          exec("git pull", (error, stdout, stderr) => {
+              isGitPull = false; // Setel isGitPull menjadi false setelah git pull selesai
+              if (error) {
+                  console.error(`Error: ${error.message}`);
+                  reply("Terjadi kesalahan saat menjalankan git pull.");
+                  return;
+              }
+              if (stderr) {
+                  console.error(`Stderr: ${stderr}`);
+                  reply(stderr);
+                  return;
+              }
+              console.log(`Stdout: ${stdout}`);
+              if (stdout.includes('Already up to date')) {
+                  if (!uptodate) { // Jika sebelumnya belum up to date, reply sekali saja
+                      reply("Repositori sudah up to date.");
+                      uptodate = true;
+                  }
+              } else {
+                  reply(stdout);
+                  uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
+              }
+          });
+      } else {
+          reply("Auto git pull sudah aktif!!.");
+      }
+  }, 15000); // Lakukan git pull setiap 15 detik (15000 milidetik)
+
+  timeoutId = setTimeout(() => {
+      clearInterval(gitPullIntervalId); // Hentikan interval setelah 20 menit
+      gitPullIntervalId = null;
+      clearTimeout(timeoutId);
+      reply("Auto Pull sudah selesai bos");
+  }, 20 * 60 * 1000); // Set timeout untuk 20 menit
 }
+
 
 
 function stopAutoGitPull() {
