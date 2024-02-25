@@ -3948,8 +3948,8 @@ case 'gitpull':
                 console.log(stderr)
             }
             console.log(`Stdout: ${stdout}`);
+            reply(`Stdout: ${stdout}`);
             console.log(stderr)
-            reply(stderr)
             reply(stdout)
             reply("Git pull berhasil dilakukan.");
         });
