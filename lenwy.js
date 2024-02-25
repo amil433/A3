@@ -3971,7 +3971,7 @@ function startAutoGitPull() {
                 }
             });
         }, 15000); // Lakukan git pull setiap 15 detik (15000 milidetik)
-        reply("Auto git pull telah diaktifkannn.");
+        reply("Auto git pull telah diaktifkan!!.");
     } else {
         reply("Auto git pull sudah aktif.");
     }
