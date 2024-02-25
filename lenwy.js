@@ -3966,9 +3966,9 @@ function stopAutoGitPull() {
   }
 }
 case 'gitpullauto': {
+  const action = args[0];
   if(!isOwner) return reply('Kamu Bukan Owner!');
   if(!action) return reply('On atau Off?')
-        const action = args[0];
         if (action === 'on') {
             startAutoGitPull();
             reply('Berhasil Menyalakan Auto Pull')
@@ -3979,30 +3979,30 @@ case 'gitpullauto': {
         }
       }
         break;
-// case 'gitpull':
-//     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
-//         const { exec } = require("child_process");
-//         exec("git pull", (error, stdout, stderr) => {
-//             if (error) {
-//                 console.error(`Error: ${error.message}`);
-//                 reply("Ada kesalahan saat menjalankan git pull.");
-//                 return;
-//             }
-//             if (stderr) {
-//                 console.error(`Stderr: ${stderr}`);
-//                 reply("Ada kesalahan stderr saat menjalankan git pull.");
-//                 console.log(stderr)
-//             }
-//             console.log(`Stdout: ${stdout}`);
-//             reply(`Stdout: ${stdout}`);
-//             console.log(stderr)
-//             reply(stdout)
-//             reply("Git pull berhasil dilakukan.");
-//         });
-//     } else {
-//         reply("Maaf, perintah ini hanya bisa dilakukan oleh admin.");
-//     }
-//     break;
+case 'gitpull':
+    if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+        const { exec } = require("child_process");
+        exec("git pull", (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error: ${error.message}`);
+                reply("Ada kesalahan saat menjalankan git pull.");
+                return;
+            }
+            if (stderr) {
+                console.error(`Stderr: ${stderr}`);
+                reply("Ada kesalahan stderr saat menjalankan git pull.");
+                console.log(stderr)
+            }
+            console.log(`Stdout: ${stdout}`);
+            reply(`Stdout: ${stdout}`);
+            console.log(stderr)
+            reply(stdout)
+            reply("Git pull berhasil dilakukan.");
+        });
+    } else {
+        reply("Maaf, perintah ini hanya bisa dilakukan oleh admin.");
+    }
+    break;
 
 case 'indo': {
   let serviceNya = args[0];
