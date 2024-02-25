@@ -3975,7 +3975,7 @@ function startAutoGitPull(waktu) {
               }
           });
       } else {
-          reply("Auto git pull sudah aktif!!.");
+          reply("Auto git pull sudah aktif cuy!!.");
       }
   }, 5000); // Lakukan git pull setiap 15 detik (15000 milidetik)
 
