@@ -3985,7 +3985,7 @@ function startAutoGitPull(waktu) {
       clearTimeout(timeoutId);
       reply("Auto Pull sudah selesai bos");
       console.log('Auto git pull dihentikan');
-  }, waktu * 60 * 1000); // Set timeout untuk 20 menit
+  }, waktu * 60 * 1000); //pake menitt
 }
 
 // command gitpullauto 
