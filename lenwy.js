@@ -3933,9 +3933,10 @@ async function setStatusOtp(statusnya, accessNya) {
     reply('Ada masalah dalam mendapatkan OTP. Coba lagi nanti ya.');
   }
 };
-let gitPullIntervalId = null;
+
 
 function startAutoGitPull() {
+  let gitPullIntervalId = null;
     if (gitPullIntervalId === null) {
         gitPullIntervalId = setInterval(() => {
             const { exec } = require("child_process");
