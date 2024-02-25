@@ -1,0 +1,181 @@
+{
+  "users": {
+    "6287866821436@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 50,
+      "level": 0,
+      "autolevelup": true
+    },
+    "6288294744259@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 45,
+      "level": 0,
+      "autolevelup": true
+    },
+    "6287840530026@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 50,
+      "level": 0,
+      "autolevelup": true
+    },
+    "6281326995442@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 50,
+      "level": 0,
+      "autolevelup": true
+    }
+  },
+  "chats": {
+    "6287866821436@s.whatsapp.net": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    },
+    "6288294744259@s.whatsapp.net": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    },
+    "6287840530026@s.whatsapp.net": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    },
+    "120363186550588099@g.us": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    },
+    "120363199506965569@g.us": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    },
+    "120363221262671739@g.us": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    },
+    "6281326995442@s.whatsapp.net": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
+    }
+  },
+  "game": {
+    "math": [],
+    "tebakgambar": [],
+    "tebakkata": [],
+    "lontong": [],
+    "lontong_desk": [],
+    "kalimat": [],
+    "lirik": [],
+    "tebakan": []
+  },
+  "database": {},
+  "settings": {
+    "6287866821436@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    }
+  },
+  "setting": {},
+  "others": {},
+  "sticker": {}
+}
