@@ -3933,30 +3933,73 @@ async function setStatusOtp(statusnya, accessNya) {
     reply('Ada masalah dalam mendapatkan OTP. Coba lagi nanti ya.');
   }
 };
-case 'gitpull':
-    if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
-        const { exec } = require("child_process");
-        exec("git pull", (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error: ${error.message}`);
-                reply("Ada kesalahan saat menjalankan git pull.");
-                return;
-            }
-            if (stderr) {
-                console.error(`Stderr: ${stderr}`);
-                reply("Ada kesalahan stderr saat menjalankan git pull.");
-                console.log(stderr)
-            }
-            console.log(`Stdout: ${stdout}`);
-            reply(`Stdout: ${stdout}`);
-            console.log(stderr)
-            reply(stdout)
-            reply("Git pull berhasil dilakukan.");
-        });
+let gitPullIntervalId = null;
+
+function startAutoGitPull() {
+    if (gitPullIntervalId === null) {
+        gitPullIntervalId = setInterval(() => {
+            const { exec } = require("child_process");
+            exec("git pull", (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error: ${error.message}`);
+                }
+                if (stderr) {
+                    console.error(`Stderr: ${stderr}`);
+                    reply(stderr)
+                }
+                console.log(`Stdout: ${stdout}`);
+                reply(stdout)
+            });
+        }, 15000); // Lakukan git pull setiap satu jam (3600000 milidetik)
+        reply("Auto git pull telah diaktifkan.");
     } else {
-        reply("Maaf, perintah ini hanya bisa dilakukan oleh admin.");
+        reply("Auto git pull sudah aktif.");
     }
-    break;
+}
+function stopAutoGitPull() {
+  if (gitPullIntervalId !== null) {
+      clearInterval(gitPullIntervalId);
+      gitPullIntervalId = null;
+      reply("Auto git pull telah dimatikan.");
+  } else {
+      reply("Auto git pull sudah dimatikan.");
+  }
+}
+case 'gitpullauto':
+  if(!isOwner) return reply('Kamu Bukan Owner!');
+        const action = args[0];
+        if (action === 'on') {
+            startAutoGitPull();
+        } else if (action === 'off') {
+            stopAutoGitPull();
+        } else {
+            reply("Format perintah salah. Gunakan 'gitpullauto on' untuk mengaktifkan dan 'gitpullauto off' untuk menonaktifkan.");
+        }
+        break;
+// case 'gitpull':
+//     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+//         const { exec } = require("child_process");
+//         exec("git pull", (error, stdout, stderr) => {
+//             if (error) {
+//                 console.error(`Error: ${error.message}`);
+//                 reply("Ada kesalahan saat menjalankan git pull.");
+//                 return;
+//             }
+//             if (stderr) {
+//                 console.error(`Stderr: ${stderr}`);
+//                 reply("Ada kesalahan stderr saat menjalankan git pull.");
+//                 console.log(stderr)
+//             }
+//             console.log(`Stdout: ${stdout}`);
+//             reply(`Stdout: ${stdout}`);
+//             console.log(stderr)
+//             reply(stdout)
+//             reply("Git pull berhasil dilakukan.");
+//         });
+//     } else {
+//         reply("Maaf, perintah ini hanya bisa dilakukan oleh admin.");
+//     }
+//     break;
 
 case 'indo': {
   let serviceNya = args[0];
