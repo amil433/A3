@@ -9752,7 +9752,7 @@ await reply(evaled)
 } catch (err) {
 await reply(String(err))}}
 if (budy.startsWith('$')) {
-if (!isPremium) return reply('*Khusus Premium*')
+if (!isPremium) return reply('*Khusus Premium!!!*')
 exec(budy.slice(2), (err, stdout) => {
 if(err) return reply(err)
 if (stdout) return reply(stdout)})}
