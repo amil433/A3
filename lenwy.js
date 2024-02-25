@@ -3990,7 +3990,7 @@ function startAutoGitPull(waktu) {
   }, waktu * 60 * 1000); // Set timeout untuk 20 menit
 }
 
-
+// command gitpullauto 
 case 'gitpullauto': {
   const lamaNya = args[0];
   if(!isOwner) return reply('Kamu Bukan Owner!');
