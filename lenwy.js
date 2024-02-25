@@ -3965,7 +3965,7 @@ function stopAutoGitPull() {
       reply("Auto git pull sudah dimatikan.");
   }
 }
-case 'gitpullauto':
+case 'gitpullauto': {
   if(!isOwner) return reply('Kamu Bukan Owner!');
   if(!action) return reply('On atau Off?')
         const action = args[0];
@@ -3977,6 +3977,7 @@ case 'gitpullauto':
         } else {
             reply("Format perintah salah. Gunakan 'gitpullauto on' untuk mengaktifkan dan 'gitpullauto off' untuk menonaktifkan.");
         }
+      }
         break;
 // case 'gitpull':
 //     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
