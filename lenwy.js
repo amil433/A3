@@ -9732,7 +9732,7 @@ break
 
 default:
 if (budy.startsWith('=>')) {
-if (!isPremium) return reply('*Khusus Premium*')
+if (!isPremium) return reply('*Khusus Premium!!!*')
 function Return(sul) {
 sat = JSON.stringify(sul, null, 2)
 bang = util.format(sat)
