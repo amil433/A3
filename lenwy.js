@@ -3972,6 +3972,7 @@ function startAutoGitPull(waktu) {
                 const pullInfo = stdout.trim();
                 const pullDescription = `Pembaruan dari repositori remote:\n${pullInfo}`;
                   reply(stdout)
+                  reply(`${stderr}`)
                   reply(pullDescription)
                   uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
               }
