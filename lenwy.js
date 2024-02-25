@@ -3935,8 +3935,11 @@ async function setStatusOtp(statusnya, accessNya) {
 };
 
 
+
+
 function startAutoGitPull() {
   let gitPullIntervalId = null;
+let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
     if (gitPullIntervalId === null) {
         gitPullIntervalId = setInterval(() => {
             const { exec } = require("child_process");
@@ -3946,23 +3949,26 @@ function startAutoGitPull() {
                 }
                 if (stderr) {
                     console.error(`Stderr: ${stderr}`);
-                    reply(stderr)
+                    reply(stderr);
                 }
                 console.log(`Stdout: ${stdout}`);
-                if(stdout.includes('Already up to date')){
-                  let uptodate = true
+                if (stdout.includes('Already up to date')) {
+                    if (!uptodate) { // Jika sebelumnya belum up to date, reply sekali saja
+                        reply("Repositori sudah up to date.");
+                        uptodate = true;
+                    }
                 } else {
-                  reply(stdout)
-                  let uptodate = false
+                    reply(stdout);
+                    uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
                 }
-                reply(stdout)
             });
-        }, 15000); // Lakukan git pull setiap satu jam (3600000 milidetik)
+        }, 15000); // Lakukan git pull setiap 15 detik (15000 milidetik)
         reply("Auto git pull telah diaktifkan.");
     } else {
         reply("Auto git pull sudah aktif.");
     }
 }
+
 function stopAutoGitPull() {
   if (gitPullIntervalId !== null) {
       clearInterval(gitPullIntervalId);
