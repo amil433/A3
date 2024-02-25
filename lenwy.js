@@ -3975,7 +3975,7 @@ function startAutoGitPull() {
       } else {
           reply("Auto git pull sudah aktif!!.");
       }
-  }, 15000); // Lakukan git pull setiap 15 detik (15000 milidetik)
+  }, 5000); // Lakukan git pull setiap 15 detik (15000 milidetik)
 
   timeoutId = setTimeout(() => {
       clearInterval(gitPullIntervalId); // Hentikan interval setelah 20 menit
