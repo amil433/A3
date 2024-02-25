@@ -3969,10 +3969,10 @@ function startAutoGitPull(waktu) {
                   }
               } else {
                 // Ambil informasi dari stdout git pull
-                const pullDescription = `Pembaruan dari repositori remote:\n${pullInfo}`;
                 const pullInfo = stdout.trim();
-                  reply(stdout);
-                  reply(pullDescription);
+                const pullDescription = `Pembaruan dari repositori remote:\n${pullInfo}`;
+                  reply(stdout)
+                  reply(pullDescription)
                   uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
               }
           });
