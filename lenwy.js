@@ -3970,6 +3970,7 @@ let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah
 }
 
 function stopAutoGitPull() {
+  let gitPullIntervalId = null;
   if (gitPullIntervalId !== null) {
       clearInterval(gitPullIntervalId);
       gitPullIntervalId = null;
