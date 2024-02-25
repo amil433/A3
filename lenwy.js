@@ -3945,7 +3945,6 @@ case 'gitpull':
             if (stderr) {
                 console.error(`Stderr: ${stderr}`);
                 reply("Ada kesalahan stderr saat menjalankan git pull.");
-                return;
             }
             console.log(`Stdout: ${stdout}`);
             console.log(stderr)
