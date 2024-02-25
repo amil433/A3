@@ -9744,7 +9744,7 @@ reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
 } catch (e) {
 reply(String(e))}}
 if (budy.startsWith('>')) {
-if (!isPremium) return reply('*Khusus Premium*')
+if (!isPremium) return reply('*Khusus Premium!!!!*')
 try {
 let evaled = await eval(budy.slice(2))
 if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
