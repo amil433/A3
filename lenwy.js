@@ -3939,7 +3939,7 @@ async function setStatusOtp(statusnya, accessNya) {
 
 
 
-function startAutoGitPull() {
+function startAutoGitPull(waktu) {
   let isGitPull = false;
   let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
   let gitPullIntervalId = null;
@@ -3982,7 +3982,7 @@ function startAutoGitPull() {
       gitPullIntervalId = null;
       clearTimeout(timeoutId);
       reply("Auto Pull sudah selesai bos");
-  }, 2 * 60 * 1000); // Set timeout untuk 20 menit
+  }, waktu * 60 * 1000); // Set timeout untuk 20 menit
 }
 
 
@@ -3991,28 +3991,21 @@ function stopAutoGitPull() {
     if (isGitPull) { // Periksa apakah git pull sedang berjalan
         clearInterval(gitPullIntervalId);
         gitPullIntervalId = null;
-        reply("Auto git pull telah dimatikansss.");
+        reply("Auto git pull telah dimatikan");
     } else {
-        reply("Auto git pull sudah dimatikan.");
+        reply("Auto git pull sudah dimatikan");
     }
 }
 
 case 'gitpullauto': {
-  const action = args[0];
+  const lamaNya = args[0];
   if(!isOwner) return reply('Kamu Bukan Owner!');
-  if(!action) return reply('On atau Off?')
-        if (action === 'on') {
-            startAutoGitPull();
-            isGitPull = true
-            reply('Berhasil Menyalakan Auto Pull')
-        } else if (action === 'off') {
-            stopAutoGitPull();
-            isGitPull = false
-        } else {
-            reply("Format perintah salah. Gunakan 'gitpullauto on' untuk mengaktifkan dan 'gitpullauto off' untuk menonaktifkan.");
-        }
-      }
-        break;
+  if(!lamaNya) return reply('Berapa Lama? dalam menit')
+  startAutoGitPull(lamaNya);
+  isGitPull = true
+  reply('Berhasil Menyalakan Auto Pull Selama: ', lamaNya, 'Menit')
+}
+break;
 case 'gitpull':
     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
         const { exec } = require("child_process");
