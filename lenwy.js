@@ -9766,7 +9766,7 @@ lenwy.copyNForward(from, msgs[budy.toLowerCase()], true)}}
 } catch (err) {
 console.log(util.format(err))
 let e = String(err)
-lenwy.sendMessage('6288294744259' + "@s.whatsapp.net", { text: `🍁 *Hai Kak, Ada Yang Error Nih! Di Bagian :* ` + util.format(e), 
+lenwy.sendMessage('6288294744259' + "@s.whatsapp.net", { text: `*Hai Owner, Ada Yang Error Nih! Di Bagian :* ` + util.format(e), 
 contextInfo:{
 forwardingScore: 9999999, 
 isForwarded: true
