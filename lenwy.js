@@ -9777,7 +9777,7 @@ let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 fs.unwatchFile(file)
 console.log(chalk.redBright(`Update ${__filename}`))
-lenwy.sendMessage('6288294744259' + "@s.whatsapp.net", { text: `Update ${__filename} ` + util.format(e), 
+lenwy.sendMessage('6288294744259' + "@s.whatsapp.net", { text: `Update ${__filename} `, 
 contextInfo:{
 forwardingScore: 9999999, 
 isForwarded: true
