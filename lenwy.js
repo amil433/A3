@@ -3934,11 +3934,6 @@ async function setStatusOtp(statusnya, accessNya) {
   }
 };
 
-
-
-
-
-
 function startAutoGitPull(waktu) {
   let isGitPull = false;
   let uptodate = false; // Variabel untuk menandai apakah pembaruan terakhir sudah up to date
