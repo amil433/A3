@@ -3967,6 +3967,7 @@ function stopAutoGitPull() {
 }
 case 'gitpullauto':
   if(!isOwner) return reply('Kamu Bukan Owner!');
+  if(!action) return reply('On atau Off?')
         const action = args[0];
         if (action === 'on') {
             startAutoGitPull();
