@@ -27,6 +27,13 @@
       "limit": 50,
       "level": 0,
       "autolevelup": true
+    },
+    "62895415449957@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 50,
+      "level": 0,
+      "autolevelup": true
     }
   },
   "chats": {
@@ -155,6 +162,24 @@
         "text_left": "",
         "text_welcome": ""
       }
+    },
+    "62895415449957@s.whatsapp.net": {
+      "mute": false,
+      "wlcm": true,
+      "nsfw": false,
+      "antitoxic": false,
+      "antilink": false,
+      "antilinkyt": false,
+      "antilinktt": false,
+      "antivirtex": true,
+      "antipanel": false,
+      "antilinkv2": false,
+      "autodown": false,
+      "notification": {
+        "status": false,
+        "text_left": "",
+        "text_welcome": ""
+      }
     }
   },
   "game": {
@@ -170,6 +195,11 @@
   "database": {},
   "settings": {
     "6287866821436@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    },
+    "62895415449957@s.whatsapp.net": {
       "status": 0,
       "autobio": false,
       "autoread": false

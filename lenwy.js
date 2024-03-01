@@ -3998,6 +3998,38 @@ case 'gitpullauto': {
   reply(`Berhasil Menyalakan Auto Pull Selama: ${lamaNya} Menit`)
 }
 break;
+
+case 'spamm':{
+  let target = args[0]
+  let pesan = args[1]
+  let jumlah = args[2]
+  let formatPro = `
+  ======= [ SPAMM ] ========
+  TARGET: ${target}
+  PESAN : ${pesan}
+  JUMLAH: ${jumlah}
+  STATUS: *MENGIRIM*
+  ==========================
+  `
+  let formatDone = `
+  ======= [ SPAMM ] ========
+  TARGET: ${target}
+  PESAN : ${pesan}
+  JUMLAH: ${jumlah}
+  STATUS: *SELESAI*
+  ==========================
+  `
+  if (!target) return reply('Masukan Target Nya Dengan Nomor\ncontoh: spamm 628878787 anjing')
+  if (!pesan) return reply ('Masukan Pesan Nya')
+  if(!jumlah) return reply('Masukan Jumlah Nya!')
+  reply(formatPro)
+  for (let i = 0 ; i < `${jumlah}`;i++){
+    lenwy.sendMessage(`${target}` + "@s.whatsapp.net", { text: `${pesan}` });
+  	sleep(Math.floor(Math.random() * 1000))
+  }
+  reply(formatDone)
+}
+break;
 case 'gitpull':
     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
         const { exec } = require("child_process");
