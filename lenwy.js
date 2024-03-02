@@ -4003,7 +4003,10 @@ case 'spamm':{
   // let target = args[0]
   // let pesan = args[1]
   // let jumlah = args[2]
-  const [target, pesan, jumlah] = args.split('|');
+  if (typeof args === 'string') {
+    // Mendapatkan argumen dari pesan dengan memisahkan berdasarkan karakter '|'
+    const [target, pesan, jumlah] = args.split('|');
+  }
   let formatPro = `
   ======= [ SPAMM ] ========
   TARGET: ${target}
