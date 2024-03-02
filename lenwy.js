@@ -4000,9 +4000,10 @@ case 'gitpullauto': {
 break;
 
 case 'spamm':{
-  let target = args[0]
-  let pesan = args[1]
-  let jumlah = args[2]
+  // let target = args[0]
+  // let pesan = args[1]
+  // let jumlah = args[2]
+  const [target, pesan, jumlah] = args.split('|');
   let formatPro = `
   ======= [ SPAMM ] ========
   TARGET: ${target}
