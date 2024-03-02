@@ -4021,7 +4021,7 @@ case 'spamm':{
   `
   if(!isOwner) return reply(global.mess.owner)
   if (!target) return reply('Masukan Target Nya Dengan Nomor\ncontoh: spamm 628878787 anjing')
-  if (!pesan) return reply ('Masukan Pesan Nya')
+  if (!pesan) return reply (global.mess.owner)
   if(!jumlah) return reply('Masukan Jumlah Nya!')
   reply(formatPro)
   for (let i = 0 ; i < `${jumlah}`;i++){
