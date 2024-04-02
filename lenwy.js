@@ -3742,7 +3742,7 @@ async function getBalanceNokos() {
       console.log('Sending request to API...');
       const response = await axios.get('https://smshub.org/stubs/handler_api.php', {
           params: {
-              api_key: '207842Uab296badfa85805618954b4518f885e5',
+              api_key: '207842U48a9f7c50b6935c56ca8adf7cbded735',
               action: 'getBalance'
           }
       });
@@ -3767,7 +3767,7 @@ async function getBalanceNokos() {
 }
 // async function serviceGoogle() {
 //   try {
-//     const response = await axios.post(`https://smshub.org/stubs/handler_api.php?api_key=207842Uab296badfa85805618954b4518f885e5&action=getNumber&service=go&operator=xl&country=6&maxPrice=32731`);
+//     const response = await axios.post(`https://smshub.org/stubs/handler_api.php?api_key=207842U48a9f7c50b6935c56ca8adf7cbded735&action=getNumber&service=go&operator=xl&country=6&maxPrice=32731`);
 
 //     const resultsNo = response.data.trim();
 //     if (resultsNo.startsWith('ACCESS_NUMBER:')) {
@@ -3796,7 +3796,7 @@ async function getBalanceNokos() {
 // }
 async function serviceOrder(serviceApa,maxPrice,negaraNya) {
   try {
-    const response = await axios.post(`https://smshub.org/stubs/handler_api.php?api_key=207842Uab296badfa85805618954b4518f885e5&action=getNumber&service=${serviceApa}&operator=any&country=${negaraNya}&maxPrice=${maxPrice}`);
+    const response = await axios.post(`https://smshub.org/stubs/handler_api.php?api_key=207842U48a9f7c50b6935c56ca8adf7cbded735&action=getNumber&service=${serviceApa}&operator=any&country=${negaraNya}&maxPrice=${maxPrice}`);
 
     const resultsNo = response.data.trim();
     let namaService = '';
@@ -3840,7 +3840,7 @@ async function getStatusTesting(accessNya) {
       try {
         const responseGet = await axios.get('https://smshub.org/stubs/handler_api.php', {
           params: {
-            api_key: '207842Uab296badfa85805618954b4518f885e5',
+            api_key: '207842U48a9f7c50b6935c56ca8adf7cbded735',
             action: 'getStatus',
             id: `${accessNya}`
           }
@@ -3877,7 +3877,7 @@ async function getOtpNya(accessNya) {
   try {
     const responseGet = await axios.get('https://smshub.org/stubs/handler_api.php', {
       params: {
-        api_key: '207842Uab296badfa85805618954b4518f885e5',
+        api_key: '207842U48a9f7c50b6935c56ca8adf7cbded735',
         action: 'getStatus',
         id: `${accessNya}`
       }
@@ -3905,7 +3905,7 @@ async function getOtpNya(accessNya) {
 
 async function setStatusOtp(statusnya, accessNya) {
   try {
-    const response = await axios.post(`https://smshub.org/stubs/handler_api.php?api_key=207842Uab296badfa85805618954b4518f885e5&action=setStatus&status=${statusnya}&id=${accessNya}`)
+    const response = await axios.post(`https://smshub.org/stubs/handler_api.php?api_key=207842U48a9f7c50b6935c56ca8adf7cbded735&action=setStatus&status=${statusnya}&id=${accessNya}`)
     const resultCancel = response.data.trim();
     if (resultCancel.includes("ACCESS_CANCEL")) {
       reply('Berhasil Membatalkan OTP');
@@ -4422,7 +4422,7 @@ async function cekHargaApi(service, negara) {
       // Mendapatkan respons dari API
       const response = await axios.get('https://smshub.org/stubs/handler_api.php', {
           params: {
-              api_key: '207842Uab296badfa85805618954b4518f885e5',
+              api_key: '207842U48a9f7c50b6935c56ca8adf7cbded735',
               action: 'getPrices',
               service: service,
               country: negara
