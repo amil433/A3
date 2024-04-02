@@ -3941,61 +3941,170 @@ function startAutoGitPull(waktu) {
   let timeoutId = null;
 
   gitPullIntervalId = setInterval(() => {
-      if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
-          const { exec } = require("child_process");
-          isGitPull = true; // Setel isGitPull menjadi true agar tidak memulai git pull berulang kali
-          exec("git pull --no-edit", (error, stdout, stderr) => {
-              isGitPull = false; // Setel isGitPull menjadi false setelah git pull selesai
-              if (error) {
-                  console.error(`Error: ${error.message}`);
-                  reply("Terjadi kesalahan saat menjalankan git pull.");
-                  return;
-              }
-              if (stderr) {
-                  console.error(`Stderr: ${stderr}`);
-                  reply(stderr);
-                  console.log(`Ini STDOUT: ${stdout}`);
-                  reply(stdout); // added comment
-                  return;
-              }
-              console.log(`Stdout: ${stdout}`);
-              if (stdout.includes('Already up to date')) {
-                  if (!uptodate) { // Jika sebelumnya belum up to date, reply sekali saja
-                      reply("Reponya udah paling baru cuy");
-                      uptodate = true;
-                  }
-              } else {
-                // Ambil informasi dari stdout git pull
-                const pullInfo = stdout.trim();
-                const pullDescription = `Pembaruan dari repositori remote:\n${pullInfo}`;
-                  reply(stdout)
-                  reply(`${stderr}`)
-                  reply(pullDescription)
-                  uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
-              }
-          });
-      } else {
-          reply("Auto git pull sudah aktif cuy!!.");
-      }
+    if (!isGitPull || gitPullIntervalId === null) { // Periksa apakah git pull sedang tidak berjalan atau interval belum diatur
+      const { exec } = require("child_process");
+      isGitPull = true; // Setel isGitPull menjadi true agar tidak memulai git pull berulang kali
+      exec("git pull --no-edit", (error, stdout, stderr) => {
+        isGitPull = false; // Setel isGitPull menjadi false setelah git pull selesai
+        if (error) {
+          console.error(`Error: ${error.message}`);
+          reply("Terjadi kesalahan saat menjalankan git pull.");
+          return;
+        }
+        if (stderr) {
+          console.error(`Stderr: ${stderr}`);
+          reply(stderr);
+          console.log(`Ini STDOUT: ${stdout}`);
+          reply(stdout); // added comment
+          return;
+        }
+        if (stdout.includes("Merge made by the 'recursive' strategy")) {
+          reply(stdout.replace("Merge made by the 'recursive' strategy", "Merge made by NotSec, On VSCode")); //testinggg
+        }
+        console.log(`Stdout: ${stdout}`);
+        if (stdout.includes('Already up to date') || stdout.includes('이미 업데이트 상태입니다.')) {
+          if (!uptodate) { // Jika sebelumnya belum up to date, reply sekali saja
+            reply("Reponya udah paling baru cuy");
+            uptodate = true;
+          }
+        } else {
+          // Ambil informasi dari stdout git pull
+          const pullInfo = stdout.trim();
+          const pullDescription = `Pembaruan dari repositori remote:\n${pullInfo}`;
+          reply(stdout)
+          reply(`${stderr}`)
+          reply(pullDescription)
+          uptodate = false; // Reset uptodate ke false jika ada pembaruan baru
+        }
+      });
+    } else {
+      reply("Auto git pull sudah aktif cuy!!.");
+    }
   }, 5000); // Lakukan git pull setiap 15 detik (15000 milidetik)
 
   timeoutId = setTimeout(() => {
-      clearInterval(gitPullIntervalId); // Hentikan interval setelah 20 menit
-      gitPullIntervalId = null;
-      clearTimeout(timeoutId);
-      reply("Auto Pull sudah selesai bos");
-      console.log('Auto git pull dihentikan');
+    clearInterval(gitPullIntervalId); // Hentikan interval setelah 20 menit
+    gitPullIntervalId = null;
+    clearTimeout(timeoutId);
+    reply("Auto Pull sudah selesai bos");
+    console.log('Auto git pull dihentikan');
   }, waktu * 60 * 1000); //pake menitt
 }
 
 // command gitpullauto 
 case 'gitpullauto': {
-  const lamaNya = args[0];
-  if(!isOwner) return reply('Kamu Bukan Owner!');
-  if(!lamaNya) return reply('Berapa Lama? dalam menit')
-  startAutoGitPull(lamaNya);
-  isGitPull = true
-  reply(`Berhasil Menyalakan Auto Pull Selama: ${lamaNya} Menit`)
+const lamaNya = args[0];
+if (!isOwner) return reply('Kamu Bukan Owner!');
+if (!lamaNya) return reply('Berapa Lama? dalam menit')
+startAutoGitPull(lamaNya);
+isGitPull = true
+reply(`Berhasil Menyalakan Auto Pull Selama: ${lamaNya} Menit`)
+}
+break;
+
+case 'gitpull':
+if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+  const { exec } = require("child_process");
+  exec("git pull --no-edit", (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      reply("Ada kesalahan saat menjalankan git pull.");
+      return;
+    }
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      reply("Ada kesalahan stderr saat menjalankan git pull.");
+      console.log(stderr)
+    }
+    console.log(`Stdout: ${stdout}`);
+    // reply(`Stdout: ${stdout}`);
+    console.log(stderr)
+    reply(stdout)
+    reply("Git pull berhasil dilakukan.");
+  });
+} else {
+  reply("Maaf, perintah ini hanya bisa dilakukan oleh admins");
+}
+break;
+
+case 'gitpush':
+if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+  const { exec } = require("child_process");
+  exec("git push origin main", (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      reply("Ada kesalahan saat menjalankan git push.");
+      return;
+    }
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      reply("Ada kesalahan stderr saat menjalankan git push.");
+      console.log(stderr)
+    }
+    console.log(`Stdout: ${stdout}`);
+    // reply(`Stdout: ${stdout}`);
+    console.log(stderr)
+    reply(stdout)
+    reply("Git push berhasil dilakukan.");
+  });
+} else {
+  reply("Maaf, perintah ini hanya bisa dilakukan oleh admins");
+}
+break;
+
+case 'gitadd':
+if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+  const { exec } = require("child_process");
+  let filenya = args[0];
+  if (!filenya) return reply('Masukkan file yang ingin ditambahkan.');
+
+  exec(`git add ${filenya}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      return reply("Ada kesalahan saat menjalankan git add.");
+    }
+
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      return reply("Ada kesalahan stderr saat menjalankan git add.");
+    }
+
+    console.log(`Stdout: ${stdout}`);
+    console.log(stderr);
+
+    // Hanya memberikan tanggapan bahwa git add berhasil jika tidak ada kesalahan
+    reply("Git add berhasil dilakukan.");
+  });
+} else {
+  reply("Maaf, perintah ini hanya bisa dilakukan oleh admins.");
+}
+break;
+
+case 'gitcommit':
+if (isOwner) {
+  const { exec } = require("child_process");
+  let pesanCommit = args[0]; // Ambil pesan commit dari argumen ke-2 //args.slice(1).join(' ');
+  if (!pesanCommit) return reply('Masukkan pesan commit.');
+
+  exec(`git commit -m "${pesanCommit}"`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      return reply("Ada kesalahan saat menjalankan git commit.");
+    }
+
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      return reply("Ada kesalahan stderr saat menjalankan git commit.");
+    }
+
+    console.log(`Stdout: ${stdout}`);
+    console.log(stderr);
+
+    // Hanya memberikan tanggapan bahwa git commit berhasil jika tidak ada kesalahan
+    reply("Git commit berhasil dilakukan.");
+  });
+} else {
+  reply("Maaf, perintah ini hanya bisa dilakukan oleh admins.");
 }
 break;
 
@@ -4035,30 +4144,30 @@ case 'spamm':{
   reply(formatDone)
 }
 break;
-case 'gitpull':
-    if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
-        const { exec } = require("child_process");
-        exec("git pull --no-edit", (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error: ${error.message}`);
-                reply("Ada kesalahan saat menjalankan git pull.");
-                return;
-            }
-            if (stderr) {
-                console.error(`Stderr: ${stderr}`);
-                reply("Ada kesalahan stderr saat menjalankan git pull.");
-                console.log(stderr)
-            }
-            console.log(`Stdout: ${stdout}`);
-            // reply(`Stdout: ${stdout}`);
-            console.log(stderr)
-            reply(stdout)
-            reply("Git pull berhasil dilakukan.");
-        });
-    } else {
-        reply("Maaf, perintah ini hanya bisa dilakukan oleh admins");
-    }
-    break;
+// case 'gitpull':
+//     if (isOwner) { // Ganti 'Admin' dengan nama pengguna admin Anda
+//         const { exec } = require("child_process");
+//         exec("git pull --no-edit", (error, stdout, stderr) => {
+//             if (error) {
+//                 console.error(`Error: ${error.message}`);
+//                 reply("Ada kesalahan saat menjalankan git pull.");
+//                 return;
+//             }
+//             if (stderr) {
+//                 console.error(`Stderr: ${stderr}`);
+//                 reply("Ada kesalahan stderr saat menjalankan git pull.");
+//                 console.log(stderr)
+//             }
+//             console.log(`Stdout: ${stdout}`);
+//             // reply(`Stdout: ${stdout}`);
+//             console.log(stderr)
+//             reply(stdout)
+//             reply("Git pull berhasil dilakukan.");
+//         });
+//     } else {
+//         reply("Maaf, perintah ini hanya bisa dilakukan oleh admins");
+//     }
+//     break;
 
 // command indo nokos    
 case 'indo': {
