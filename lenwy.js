@@ -4475,6 +4475,7 @@ async function cekHargaApi(service, negara) {
   }
 }
 
+//testing
 
 case 'cekharga':{
 if(!isOwner)  return reply("Perintah ini hanya untuk owner");
