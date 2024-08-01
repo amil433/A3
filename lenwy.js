@@ -245,6 +245,7 @@ module.exports = lenwy = async (lenwy, m, chatUpdate, store) => {
     const AntiLink = m.isGroup ? ntilink.includes(from) : false;
     const ChatBot = m.isGroup ? chatbot.includes(from) : false;
     const autodelete = from && isCmd ? antidel.includes(from) : false;
+    const Input = mentionByTag[0] ? mentionByTag[0] : q ? numberQuery : false;
     const isBan = banned.includes(m.sender);
     const isUser = pengguna.includes(m.sender);
     const content = JSON.stringify(m.message);
