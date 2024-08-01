@@ -255,7 +255,6 @@ module.exports = lenwy = async (lenwy, m, chatUpdate, store) => {
       m.message.extendedTextMessage.contextInfo != null
         ? m.message.extendedTextMessage.contextInfo.mentionedJid
         : [];
-    const Input = mentionByTag[0] ? mentionByTag[0] : q ? numberQuery : false;
     const time = moment(Date.now())
       .tz("Asia/Jakarta")
       .locale("id")
